@@ -1,7 +1,11 @@
 <template>
   <div>
     <b-list-group>
-        <Item v-for="item in items" :key="item.id" :item="item" @delete="deleteItem"></Item>
+        <Item v-for="item in items" :key="item.id" 
+        :item="item" 
+        @delete="deleteItem"
+        @update="updateItem"
+        ></Item>
     </b-list-group>
   </div>
 </template>
@@ -21,6 +25,9 @@ export default {
   methods: {
       deleteItem(id){
           this.$emit("deleteItem", id);
+      },
+      updateItem(item){
+        this.$emit("updateItem", item);
       }
   }
 }

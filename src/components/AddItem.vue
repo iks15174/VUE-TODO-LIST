@@ -28,7 +28,7 @@ export default {
   data() {
     return {
       text: "",
-      date: null,
+      date: new Date(),
       inputState: null,
       dateState: null,
     };
@@ -48,7 +48,7 @@ export default {
       else this.inputState = true;
       this.$emit("addItem", this.text, this.date);
       this.text = "";
-      this.date = null;
+      this.date = new Date();
       this.inputState = null;
       this.dateState = null;
     },

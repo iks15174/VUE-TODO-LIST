@@ -2,8 +2,15 @@
   <div id="app">
     <Head></Head>
     <AddItem @addItem="addTodoItem"></AddItem>
-    <ItemBoard :items="todoItems" @deleteItem="handleDeleteItem"></ItemBoard>
-    <Foot :total="totalItems" :completed="completedItems"></Foot>
+    <ItemBoard :items="todoItems" 
+    @deleteItem="handleDeleteItem"
+    @updateItem="handleUpdateItem"
+    ></ItemBoard>
+    <Foot 
+    :total="totalItems" 
+    :completed="completedItems" 
+    @removeCompleted="handleRemoveCompleted">
+    </Foot>
   </div>
 </template>
 
@@ -35,6 +42,22 @@ export default {
       for(let i = 0; i < this.todoItems.length; i++){
         if(this.todoItems[i].id === id){
           this.todoItems.splice(i, 1);
+        }
+      }
+    },
+    handleUpdateItem(item){
+      for(let i = 0; i < this.todoItems.length; i++){
+        if(this.todoItems[i].id === item.id){
+          this.todoItems[i].text = item.text;
+          this.todoItems[i].date = item.date;
+        }
+      }
+    },
+    handleRemoveCompleted(){
+      for(let i = 0; i<this.todoItems.length; i++){
+        if(this.todoItems[i].checked){
+          this.todoItems.splice(i, 1);
+          i = i - 1;
         }
       }
     }
