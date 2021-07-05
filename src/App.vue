@@ -22,11 +22,12 @@ export default {
     }
   },
   methods: {
-    addTodoItem(text){
+    addTodoItem(text, date){
       let itemTemp = {
         id: (this.todoItems.length === 0 ? 0 : (this.todoItems[this.todoItems.length - 1].id + 1)),
         checked: false,
-        text: text
+        text: text,
+        date : date
       };
       this.todoItems.push(itemTemp);
     },

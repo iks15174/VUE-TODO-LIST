@@ -13,11 +13,13 @@
         {{ item.text }}
       </span>
       <b-icon-x-circle-fill variant="danger" @click="deleteItem"></b-icon-x-circle-fill>
+      <div class="text-primary">{{ diffDays }}일 남았습니다.</div>
     </b-list-group-item>
   </span>
 </template>
 
 <script>
+const oneDay = 24 * 60 * 60 * 1000;
 export default {
   name: "Item",
   props: {
@@ -34,6 +36,11 @@ export default {
         this.$emit('delete', this.item.id);
     }
   },
+  computed: {
+    diffDays(){
+      return Math.round(Math.abs(((new Date()) - this.item.date) / oneDay))
+    }
+  }
 };
 </script>
 

@@ -15,7 +15,9 @@ export default {
   },
   computed: {
       getTitle(){
-          return this.today.getFullYear() + "년 " + (this.today.getMonth()+1) + "월 " + this.today.getDate() + "일";
+          return this.today.getFullYear() + "년 " + 
+          (this.today.getMonth()+1) + "월 " + 
+          this.today.getDate() + "일";
       },
       getSubTitle(){
           return dayStr[this.today.getDay() - 1] + "요일";
